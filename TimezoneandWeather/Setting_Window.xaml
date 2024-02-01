@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimezoneandWeather"
         mc:Ignorable="d"
-        Title="Setting_Window" Height="400" Width="350">
+        Title="Setting_Window" Height="400" Width="350"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        BorderThickness="1">
     <Window.Resources>
         <Style TargetType="Grid">
             <Setter Property="Background"  Value="White"></Setter>
@@ -14,10 +18,39 @@
             <Setter Property="Foreground" Value="Black">
             </Setter>
         </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="2,5,2,0"></Setter>
+        </Style>
     </Window.Resources>
     <Grid>
-        <TextBlock x:Name="GuideTxtBlck" Text="{Binding SettingGuide}" TextWrapping="Wrap" Margin="5 5 5 5"></TextBlock>
-        <TextBlock Text="Pick country:" VerticalAlignment="Center"></TextBlock>
-        <TextBlock Text="Theme:" VerticalAlignment="Center" Margin="5 150 0 0"></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Height="20" VerticalAlignment="Top" Orientation="Horizontal" 
+                    Grid.Row="0" FlowDirection="RightToLeft">
+            <Button Name="Close_Btn" DockPanel.Dock="Right" Width="30"
+                    Background="Transparent" BorderThickness="0" Click="Close_Btn_Click">
+                <Image Source="Resources\Icons\Close.png"></Image>
+            </Button>
+        </StackPanel>
+        <TextBlock x:Name="GuideTxtBlck" Text="{Binding SettingGuide}" TextWrapping="Wrap" 
+                       Margin="5,5,5,5" Grid.Row="1" TextAlignment="Left"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Background="LightGray">
+            <TextBlock Text="Pick Timezone:" VerticalAlignment="Center"></TextBlock>
+            <ComboBox x:Name="TimezoneBox" ItemsSource="{Binding TimezoneList}" DisplayMemberPath="DisplayName" Height="23" Margin="5" Width="250"></ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Background="LightGray">
+            <TextBlock Text="Theme:" VerticalAlignment="Center" ></TextBlock>
+            <ComboBox x:Name="ThemeBox" ItemsSource="{Binding ThemeList}" Height="23" Width="80" Margin="45,0"></ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <Button Margin="50 120" x:Name="SaveBtn" Content="Save" FontWeight="Bold" Width="60" Height="30" 
+                    Style="{StaticResource RoundedBorderBtn}" Click="SaveBtn_Click">
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

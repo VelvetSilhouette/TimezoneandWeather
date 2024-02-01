@@ -9,40 +9,46 @@
         WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.Resources>
         <Style TargetType="Window">
-            <Setter Property="Background"  Value="Black"></Setter>
+            <Setter Property="Background"  Value="White"></Setter>
         </Style>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White">
+        <Style x:Name="CurrentCuntTxtBlk" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#121212">
             </Setter>
         </Style>
     </Window.Resources>
     <StackPanel>
-        <DockPanel x:Name="WindowButtonDock" Height="30" LastChildFill="False" >
+        <StackPanel x:Name="WindowButtonDock" Height="30" Orientation="Horizontal" 
+                    FlowDirection="RightToLeft">
             <Button Name="Close_Btn" DockPanel.Dock="Right" Width="30"
                     Background="Transparent" BorderThickness="0" Click="Close_Btn_Click">
                 <Image Source="Resources\Icons\Close.png"></Image>
             </Button>
             <Button Name="Setting_Btn" DockPanel.Dock="Right" Margin="0 0 10 0" Width="30"
-                    Background="Transparent" BorderThickness="0">
+                    Background="Transparent" BorderThickness="0" Click="Setting_Btn_Click">
                 <Image Source="Resources\Icons\Setting.png"></Image>
             </Button>
-        </DockPanel>
+        </StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="225*"></ColumnDefinition>
+                <ColumnDefinition Width="173*"></ColumnDefinition>
+                <ColumnDefinition Width="52*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <TextBlock  Text="No Location info" Padding="0 50 0 0" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Text="No Time info" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock x:Name="UserLocalTxtBlk" Text="Text" Padding="0 50 0 0" TextAlignment="Center"
+                           FontSize="20" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" MaxHeight="100"></TextBlock>
+                <TextBlock x:Name="UserTimeTxtBlk" Text="Text" TextAlignment="Center" FontSize="20"
+                           HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"></TextBlock>
                 <Image Width="150" Height="150"></Image>
-                <TextBlock Text="No Weather Info"></TextBlock>
+                <TextBlock Text="Weather"></TextBlock>
             </StackPanel>
-            <StackPanel Grid.Column="1">
-                <TextBlock Text="No Location info" Padding="0 50 0 0" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock Text="No Time info" HorizontalAlignment="Center"></TextBlock>
-                <Image Width="200" Height="150" ></Image>
-                <TextBlock Text="No Weather Info"></TextBlock>
+            <StackPanel Grid.Column="1" Grid.ColumnSpan="2">
+                <TextBlock x:Name="AltTimeZoneTxtBlck" Text="Empty" Padding="0 50 0 0" TextAlignment="Center"
+                           FontSize="20" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" MaxHeight="100"></TextBlock>
+                <TextBlock x:Name="AltTimeTxtBlck" Text="Check Setting" TextAlignment="Center" 
+                           FontSize="20" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"></TextBlock>
+                <Image Width="200" Height="150"></Image>
+                <TextBlock Text="Weather"></TextBlock>
             </StackPanel>
         </Grid>
     </StackPanel>
