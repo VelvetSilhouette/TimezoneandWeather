@@ -2,17 +2,22 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TimezoneandWeather"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Views/Main/MainView.xaml">
+    <!--StartupUri="Views/Main/MainView.xaml">-->
     <Application.Resources>
-        <Style x:Key="RoundedBorderBtn" TargetType="Button">
-            <Setter Property="BorderBrush" Value="LightGray"></Setter>
-            <Setter Property="BorderThickness" Value="1"></Setter>
-            <Setter Property="Background" Value="White"></Setter>
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"></Setter>
-                </Style>
-            </Style.Resources>
-        </Style>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="PrimaryColor" Color="#90d5ec"/>
+            <SolidColorBrush x:Key="SecondaryColorLightBlue" Color="#c5e3ec"/>
+            <SolidColorBrush x:Key="SecondaryColorLightGray" Color="#e7e7e7"/>
+
+            <Style x:Key="DefaultButton" TargetType="{x:Type Button}">
+                <Style.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Style.Resources>
+                <Setter Property="Background" Value="White"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
