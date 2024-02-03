@@ -35,6 +35,8 @@ namespace TimezoneandWeather.ViewModels
                 this.canExecuteEvaluator = canExecuteEvaluator;
             }
 
+            public void Execute(object parameter) => this.methodToExecute.Invoke((T)parameter);
+
             public bool CanExecute(object parameter)
             {
                 if (this.canExecuteEvaluator == null) return true;
@@ -43,8 +45,6 @@ namespace TimezoneandWeather.ViewModels
                     bool result = this.canExecuteEvaluator.Invoke(); return result;
                 }
             }
-
-            public void Execute(object parameter) => this.methodToExecute.Invoke((T)parameter);
         }
     }
 }
